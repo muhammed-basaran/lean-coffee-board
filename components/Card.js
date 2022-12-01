@@ -3,7 +3,7 @@ import { FaTrash } from "react-icons/fa";
 import { nanoid } from "nanoid";
 import styled from "styled-components";
 
-export default function Card({ entries }) {
+export default function Card({ entries, onDelete }) {
   function handleDelete() {}
 
   return (
