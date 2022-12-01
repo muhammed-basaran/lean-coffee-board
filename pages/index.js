@@ -10,12 +10,15 @@ export default function HomePage() {
   const handleSubmit = (newEntry) => {
     setEntries([...entries, { ...newEntry }]);
   };
+  function handleDelete(id) {
+    setEntries(entries.filter((entry) => entry.key !== id));
+  }
 
   return (
     <StyledBody>
       <Header />
       <div></div>
-      <Card entries={entries} />
+      <Card entries={entries} onDelete={handleDelete} />
       <footer>
         <Form onSubmit={handleSubmit} />
       </footer>

@@ -31,7 +31,7 @@ export default function Form({ onSubmit }) {
           placeholder="Your name..."
           class="name"
         ></input>
-        <StyledButton type="submit" class="button-78" role="button">
+        <StyledButton type="submit" role="button">
           Create
         </StyledButton>
       </StyledFooter>
