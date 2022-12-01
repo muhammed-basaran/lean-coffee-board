@@ -1,7 +1,8 @@
+import Card from "../components/Card";
 import Header from "../components/Header";
 import Form from "../components/Form";
-import Card from "../components/Card";
 import { useState } from "react";
+import styled from "styled-components";
 
 export default function HomePage() {
   const [entries, setEntries] = useState([]);
@@ -9,22 +10,23 @@ export default function HomePage() {
   const handleSubmit = (newEntry) => {
     setEntries([...entries, { ...newEntry }]);
   };
-  console.log();
 
   return (
-    <div>
+    <StyledBody>
       <Header />
       <div></div>
       <Card entries={entries} />
       <footer>
         <Form onSubmit={handleSubmit} />
       </footer>
-    </div>
+    </StyledBody>
   );
 }
 
-const thoughtsArray = {
-  id: "",
-  thoughts: "",
-  name: "",
-};
+const StyledBody = styled.div`
+  text-align: center;
+  border: 2px solid black;
+  height: 100vh;
+  width: 100vw;
+  background-color: beige;
+`;
