@@ -10,7 +10,7 @@ export default function Card({
   onEdit,
   edit,
   editID,
-  setEntries,
+  updateQuestion,
   setEdit,
 }) {
   function handleEdit(event) {
@@ -18,15 +18,13 @@ export default function Card({
     const newQuestion = event.target.elements.newQuestion.value;
     const newName = event.target.elements.newName.value;
 
-    setEntries(
-      entries.map((entry) => {
-        if (entry.id === editID) {
-          return { id: entry.id, name: newName, thoughts: newQuestion };
-        }
+    const editedContent = {
+      text: newQuestion,
+      name: newName,
+    };
 
-        return entry;
-      })
-    );
+    updateQuestion(editID, editedContent);
+
     setEdit(false);
     console.log(entries);
   }
@@ -46,7 +44,7 @@ export default function Card({
               <StyledList>
                 <li>
                   {" "}
-                  {edit ? (
+                  {edit && entry.id == editID ? (
                     <input
                       name="newName"
                       id="name"
@@ -59,8 +57,8 @@ export default function Card({
                     <span>{entry.name}</span>
                   )}
                 </li>
-                <li>
-                  {edit ? (
+                <StyledListItem>
+                  {edit && entry.id == editID ? (
                     <input
                       name="newQuestion"
                       required
@@ -70,11 +68,13 @@ export default function Card({
                       className="thoughts"
                     ></input>
                   ) : (
-                    <span>{entry.thoughts}</span>
+                    <span>{entry.text}</span>
                   )}
-                </li>
+                </StyledListItem>
               </StyledList>
-              {edit && <button type="submit"> + </button>}
+              {edit && entry.id == editID && (
+                <StyledEditButton type="submit"> + </StyledEditButton>
+              )}
             </form>
           </StyledSection>
         ))}
@@ -85,19 +85,37 @@ export default function Card({
 
 const StyledSection = styled.section`
   position: relative;
-
   background-color: brown;
   color: white;
   border: 2px solid black;
-  border-radius: 20px;
+  border-radius: 30px;
   padding: 10px;
-  padding-left: 20px;
-  margin: 20px;
+  margin: 15px;
   text-align: left;
+  overflow: scroll;
 `;
 
 const StyledList = styled.ul`
   list-style: none;
+`;
+
+const StyledListItem = styled.li`
+  width: 350px;
+`;
+
+const StyledEditButton = styled.button`
+  position: absolute;
+  left: 50px;
+  bottom: 5px;
+
+  color: black;
+  border: 1px solid black;
+  width: 30px;
+  height: 20px;
+  background-color: beige;
+  cursor: pointer;
+  text-align: center;
+  padding-top: 1px;
 `;
 
 const StyledIcon = styled.button`

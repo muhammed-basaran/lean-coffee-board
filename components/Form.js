@@ -1,13 +1,12 @@
-import nanoid from "nanoid";
 import styled from "styled-components";
 
 export default function Form({ onSubmit }) {
   function submit(event) {
     event.preventDefault();
+
     onSubmit({
-      thoughts: event.target.elements.thoughts.value,
+      text: event.target.elements.text.value,
       name: event.target.elements.name.value,
-      id: nanoid,
     });
     event.target.reset();
   }
@@ -16,7 +15,7 @@ export default function Form({ onSubmit }) {
     <section>
       <StyledFooter onSubmit={submit}>
         <input
-          name="thoughts"
+          name="text"
           required
           placeholder="Type your thoughts..."
           id="thoughts"
