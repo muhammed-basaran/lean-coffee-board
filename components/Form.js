@@ -21,7 +21,7 @@ export default function Form({ onSubmit }) {
           placeholder="Type your thoughts..."
           id="thoughts"
           type="text"
-          class="thoughts"
+          className="thoughts"
         ></input>
         <input
           name="name"
@@ -29,7 +29,7 @@ export default function Form({ onSubmit }) {
           type="text"
           required
           placeholder="Your name..."
-          class="name"
+          className="name"
         ></input>
         <StyledButton type="submit" role="button">
           Create
