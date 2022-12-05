@@ -22,7 +22,7 @@ export default function HomePage() {
   }
   useEffect(() => {
     getQuestion();
-  }, [entries]);
+  }, []);
 
   async function postQuestion(newCard) {
     await fetch(
